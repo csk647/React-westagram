@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-// import { Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import Main from "./Main";
-// import React, { Component } from 'react';
 import "./Login.css";
 import Logotext from "../Images/logo_text.png";
+// import LgnBtn from "../Components/LgnBtn.js";
 // import { render } from "@testing-library/react";
 
 class Login extends Component {
@@ -18,6 +18,7 @@ class Login extends Component {
     this.handleChange2 = this.handleChange2.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleChange = e => {
     this.setState({ id: e.target.value });
   };
@@ -27,11 +28,14 @@ class Login extends Component {
 
   handleSubmit = e => {
     // alert(this.state.id + "&" + this.state.password);
+    // e.preventDefault();
     this.setState({ id: "" }, { password: "" });
-    e.preventDefault();
   };
 
   render() {
+    const linkStyle = {
+      width: "100%"
+    };
     return (
       <div className="imBoss">
         <div className="largestBox">
@@ -55,20 +59,25 @@ class Login extends Component {
                 value={this.state.password}
                 onChange={this.handleChange2}
               />
-              <input
-                // className="idBox3"
-                className={`idBox3 ${
-                  this.state.id.length !== 0 && this.state.password.length !== 0
-                    ? "reactLoginButton"
-                    : ""
-                }`}
-                id="special"
-                type="button"
-                value="로그인"
-                disabled={!this.state.id && !this.state.password}
-                onClick={this.handleSubmit}
-              />
-
+              <Link to="/Main" style={linkStyle}>
+                <input
+                  className={`idBox3 ${
+                    this.state.id.length !== 0 &&
+                    this.state.password.length !== 0
+                      ? "reactLoginButton"
+                      : ""
+                  }`}
+                  id="special"
+                  type="button"
+                  value="로그인"
+                  disabled={
+                    (!this.state.id && !this.state.password) ||
+                    (!this.state.id && this.state.password) ||
+                    (this.state.id && !this.state.password)
+                  }
+                  onClick={this.handleSubmit}
+                />
+              </Link>
               {/* <Route path="/" component={Login} exact={true} />
             <Route path="/Main" component={Main} /> */}
             </div>

@@ -138,9 +138,7 @@ ul {
 }
 .divClass {
   font-size: 14px;
-  height: 18px;
   position: relative;
-  margin-top: 4px;
 }
 .newCommentMustHavePadding {
   font-weight: bold;
@@ -151,6 +149,7 @@ ul {
 }
 .addClassForNewComment {
   font-size: 14px;
+  margin-left: 4px;
 }
 
 .heartOfNewComment {
@@ -351,7 +350,8 @@ ul {
 
 /* 여기부터 오른쪽 요소 시작 */
 .rightMain {
-  height: 100vh;
+  /* height: 100vh; */
+  /* 이거 때문에 input이 작동을 안했다. 왜 인지 찾아 보기 */
   top: 130px;
   position: fixed;
   z-index: 10;
